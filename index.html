@@ -1,0 +1,219 @@
+<html>
+
+<head>
+    <title>Apoio Rose</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <script language="Javascript">
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getCheckDigit(value) {
+
+            const nif = value.toString();
+
+            const total = nif[0] * 9 + nif[1] * 8 + nif[2] * 7 + nif[3] * 6 + nif[4] * 5 + nif[5] * 4 + nif[6] * 3 + nif[7] * 2;
+
+            const modulo11 = (Number(total) % 11);
+
+            const checkDigit = modulo11 < 2 ? 0 : 11 - modulo11;
+
+            return checkDigit;
+        }
+
+        function getNif(minAndMax) {
+
+            var minAndMaxSplitted = minAndMax.split("|");
+
+            var min = parseInt(minAndMaxSplitted[0]);
+            var max = parseInt(minAndMaxSplitted[1]);
+
+            var random = getRandomInt(min, max);
+
+            var checkDigit = getCheckDigit(random);
+
+            var nif = random.toString() + checkDigit.toString();
+
+            document.getElementById("nif").innerHTML = nif;
+
+            return;
+        }
+
+        function getAnotherNif() {
+            var e = document.getElementById("start");
+
+            getNif(e.options[e.selectedIndex].value);
+        }
+
+    </script>
+
+    <h1>Apoio do Rose - Criação de Cliente</h1>
+    <h1 class="titu">Entidade</h1>
+    <h2>NIF</h2>
+
+    <h4>
+        Começa por: <select id="start" onchange="getAnotherNif()">
+
+            <option value="10000000|19999999">1</option>
+            <option value="20000000|29999999">2</option>
+            <option value="30000000|39999999">3</option>
+            <option value="45000000|45999999">45</option>
+            <option value="50000000|59999999">5</option>
+            <option value="60000000|69999999">6</option>
+            <option value="70000000|70999999">70</option>
+            <option value="71000000|71999999">71</option>
+            <option value="72000000|72999999">72</option>
+            <option value="74000000|74999999">74</option>
+            <option value="75000000|75999999">75</option>
+            <option value="77000000|77999999">77</option>
+            <option value="78000000|78999999">78</option>
+            <option value="79000000|79999999">79</option>
+            <option value="80000000|80999999">8</option>
+            <option value="90000000|90999999">90</option>
+            <option value="91000000|91999999">91</option>
+            <option value="98000000|98999999">98</option>
+            <option value="99000000|99999999">99</option>
+        </select>
+    </h4>
+
+
+    <h3 class="nifcolor"><b><u><span id="nif"></span></u></b></h3>
+
+    <h2><button onClick="getAnotherNif()">Gerar</button></h2>
+
+    <script>getAnotherNif()</script>
+
+    <hr>
+
+    <script>
+        // lista de nomes de ruas
+        const nomesRuas = ["Rua Da Paz", "Avenida Brasil", "Rua São Paulo", "Rua XV de Novembro", "Rua do Comércio", "Rua das Flores", "Rua da Liberdade", "Avenida Getúlio Vargas", "Rua José Bonifácio", "Rua Do Rosário", "Rua Do Cabo Verdiano", "Rua Do Programador", "Rua dos Ciganos", "Rua dos Moldavos", "Rua dos Curiosos", "Rua das Platinas", "Rua Quatrocentos e Vinte", "Rua Sententa e Nove", "Rua Henrique Milheiro", "Avenida Paulista", "Rua Antonio Costa", "Rua da Consolação", "Rua 25 de Março", "Avenida Rio Branco", "Rua Marechal Deodoro", "Rua Augusta", "Avenida Rebouças", "Rua Oscar Freire", "Rua Vergueiro", "Avenida 25 de Abril", "Rua do Ouvidor"];
+
+        // função para escolher um nome aleatório da lista
+        function nomeAleatorio(lista) {
+            const indice = Math.floor(Math.random() * lista.length);
+            return lista[indice];
+        }
+
+        function gerarRua() {
+            // criação de uma rua com nome aleatório
+            const rua = nomeAleatorio(nomesRuas);
+            document.getElementById("rua").innerHTML = rua;
+        }
+    </script>
+
+    <h1 class="titu">Morada</h1>
+
+    <h2>Rua</h2>
+
+
+    <h3 id="rua">Rua do Exemplo</h3>
+    <div class="divc">
+        <button onclick="gerarRua()">Gerar Rua</button>
+    </div>
+
+    <br>
+
+    <script>
+        function gerarNumeroAleatorioa() {
+            const numeroAleatorio = Math.floor(Math.random() * 50) + 1;
+            document.getElementById("numeroGeradow").textContent = numeroAleatorio;
+        }
+    </script>
+
+    <div class="divc">
+        <h2>Número da Porta</h2>
+        <h3 id="numeroGeradow">?</h3>
+        <button onclick="gerarNumeroAleatorioa()">Gerar número</button>
+
+    </div>
+
+
+
+
+
+    <script>
+        function gerarNumeroAleatorio() {
+            const numeroAleatorio = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+            const numeroComPrefixo = "2830-" + numeroAleatorio;
+            document.getElementById("numeroGerado").textContent = numeroComPrefixo;
+        }
+    </script>
+    <div class="divc">
+        <h2>Código Postal</h2>
+        <h3 id="numeroGerado">2830-XXX</h3>
+        <button onclick="gerarNumeroAleatorio()">Gerar Codigo Postal</button>
+
+    </div>
+    <hr>
+
+    <div class="divc">
+        <h1 class="titu">Contactos</h1>
+        <h2>Telefone</h2>
+        <h3 id="telefoneGerado">21XXXXXXX</h3>
+        <button onclick="gerarNumeroAleator()">Gerar número</button>
+        <h2>Telemóvel</h2>    
+        <h3 id="telemovelGerado">91XXXXXXX</h3>
+        <button onclick="gerarNumeroAlea()">Gerar número</button><br>
+        <h2>E-Mail e Website</h2>
+        <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa"><br><br>
+        <input type="text" id="tipoEmpresa" placeholder="Tipo de Empresa"><br><br>
+        <button onclick="gerarEmail()">Gerar E-mail</button>
+        <h2 id="emailGerado">nome@exemplo.com</h2>
+        <h2 id="websiteGerado">www.exemplo.com</h2>
+    </div>
+
+    <script>
+        function gerarNumeroAleator() {
+            const min = 210000000;
+            const max = 219999999;
+            const numeroAleator = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById("telefoneGerado").textContent = numeroAleator;
+        }
+    </script>
+
+<script>
+    function gerarNumeroAlea() {
+        const min = 910000000;
+        const max = 919999999;
+        const numeroAlea = Math.floor(Math.random() * (max - min + 1)) + min;
+        document.getElementById("telemovelGerado").textContent = numeroAlea;
+    }
+</script>
+
+
+
+    <script>
+        function gerarEmail() {
+            // Obter o valor dos campos de entrada
+            const nomeEmpresa = document.getElementById("nomeEmpresa").value;
+            const tipoEmpresa = document.getElementById("tipoEmpresa").value;
+
+            // Gerar o endereço de e-mail
+            const email = `${nomeEmpresa.toLowerCase().replace(/ /g, '')}@${tipoEmpresa.toLowerCase().replace(/ /g, '')}.com`;
+            const websiteLink = `https://www.${nomeEmpresa.toLowerCase()}${tipoEmpresa.toLowerCase()}.com`;
+
+            // Atualizar o valor do elemento HTML
+            document.getElementById("emailGerado").innerHTML = email;
+            document.getElementById("websiteGerado").innerHTML = websiteLink;
+        }
+    </script>
+
+
+
+</body>
+
+</html>
