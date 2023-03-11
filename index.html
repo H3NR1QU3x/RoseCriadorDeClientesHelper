@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Apoio Rose</title>
+    <title>Rose - Criação de Cliente</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/icon.png">
@@ -60,7 +60,10 @@
 
     </script>
 
-    <h1>Apoio do Rose - Criação de Cliente</h1>
+    <h1>Rose - Criação de Cliente</h1>
+    <hr />
+    <h2>Ferramenta que ajuda e facilita na criação de cliente no Rose.</h2>
+    <hr />
     <h1 class="titu">Entidade</h1>
     <h2>NIF</h2>
 
@@ -158,6 +161,14 @@
         <button onclick="gerarNumeroAleatorio()">Gerar Codigo Postal</button>
 
     </div>
+
+    <div class="divc">
+        <h2>Localidade</h2>
+
+        <h3 class="barreiro">Barreiro</h3>
+
+
+    </div>
     <hr>
 
     <div class="divc">
@@ -165,13 +176,16 @@
         <h2>Telefone</h2>
         <h3 id="telefoneGerado">21XXXXXXX</h3>
         <button onclick="gerarNumeroAleator()">Gerar número</button>
-        <h2>Telemóvel</h2>    
+        <h2>Telemóvel</h2>
         <h3 id="telemovelGerado">91XXXXXXX</h3>
         <button onclick="gerarNumeroAlea()">Gerar número</button><br>
         <h2>E-Mail e Website</h2>
-        <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa"><br><br>
-        <input type="text" id="tipoEmpresa" placeholder="Tipo de Empresa"><br><br>
-        <button onclick="gerarEmail()">Gerar E-mail</button>
+        <div class="input-container">
+        <input class="centralizado" type="text" id="nomeEmpresa" placeholder="Nome da Empresa"><br><br>
+        <input class="centralizado" type="text" id="tipoEmpresa" placeholder="Tipo de Empresa"><br><br>
+        </div>
+        <br>
+        <button onclick="gerarEmail()">Gerar E-mail e Website</button>
         <h2 id="emailGerado">nome@exemplo.com</h2>
         <h2 id="websiteGerado">www.exemplo.com</h2>
     </div>
@@ -185,14 +199,14 @@
         }
     </script>
 
-<script>
-    function gerarNumeroAlea() {
-        const min = 910000000;
-        const max = 919999999;
-        const numeroAlea = Math.floor(Math.random() * (max - min + 1)) + min;
-        document.getElementById("telemovelGerado").textContent = numeroAlea;
-    }
-</script>
+    <script>
+        function gerarNumeroAlea() {
+            const min = 910000000;
+            const max = 919999999;
+            const numeroAlea = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById("telemovelGerado").textContent = numeroAlea;
+        }
+    </script>
 
 
 
@@ -204,13 +218,18 @@
 
             // Gerar o endereço de e-mail
             const email = `${nomeEmpresa.toLowerCase().replace(/ /g, '')}@${tipoEmpresa.toLowerCase().replace(/ /g, '')}.com`;
-            const websiteLink = `www.${nomeEmpresa.toLowerCase()}${tipoEmpresa.toLowerCase()}.com`;
+            const websiteLink = `www.${nomeEmpresa.toLowerCase().replace(/ /g, '')}${tipoEmpresa.toLowerCase().replace(/ /g, '')}.com`;
 
             // Atualizar o valor do elemento HTML
             document.getElementById("emailGerado").innerHTML = email;
             document.getElementById("websiteGerado").innerHTML = websiteLink;
         }
     </script>
+
+    <hr class="normal" />
+
+    <h1>Henrique Milheiro - 11ºIG</h1>
+    <br />
 
 
 
