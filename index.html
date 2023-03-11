@@ -204,7 +204,7 @@
 
             // Gerar o endereço de e-mail
             const email = `${nomeEmpresa.toLowerCase().replace(/ /g, '')}@${tipoEmpresa.toLowerCase().replace(/ /g, '')}.com`;
-            const websiteLink = `https://www.${nomeEmpresa.toLowerCase()}${tipoEmpresa.toLowerCase()}.com`;
+            const websiteLink = `www.${nomeEmpresa.toLowerCase()}${tipoEmpresa.toLowerCase()}.com`;
 
             // Atualizar o valor do elemento HTML
             document.getElementById("emailGerado").innerHTML = email;
